@@ -11,6 +11,7 @@
 				:tabbedView="true"
 				:tabs="tabs"
 				:showAttachmentView="true"
+				:useCameraView="true"
 				@validateForm="validateForm"
 				:showDownloadPDFButton="true"
 			>
@@ -43,7 +44,6 @@
 						:currency="currency"
 						:isReadOnly="isReadOnly || isFormReadOnly"
 					/>
-			
 				</template>
 			</FormView>
 		</ion-content>
@@ -62,7 +62,6 @@ import ExpenseAdvancesTable from "@/components/ExpenseAdvancesTable.vue"
 
 import { getCompanyCurrency } from "@/data/currencies"
 
-
 const dayjs = inject("$dayjs")
 
 const today = dayjs().format("YYYY-MM-DD")
@@ -71,7 +70,6 @@ const isReadOnly = ref(false)
 const sessionEmployee = inject("$employee")
 const currEmployee = ref(sessionEmployee.data.name)
 const employeeCompany = ref(sessionEmployee.data.company)
-
 
 const props = defineProps({
 	id: {
@@ -129,9 +127,7 @@ const advances = createResource({
 		return data.forEach((advance) => {
 			if (
 				props.id &&
-				expenseClaim.value.advances?.some(
-					(entry) => entry.employee_advance === advance.name
-				)
+				expenseClaim.value.advances?.some((entry) => entry.employee_advance === advance.name)
 			)
 				return
 
@@ -161,8 +157,7 @@ const companyDetails = createResource({
 	params: { company: expenseClaim.value.company },
 	onSuccess(data) {
 		expenseClaim.value.cost_center = data?.cost_center
-		expenseClaim.value.payable_account =
-			data?.default_expense_claim_payable_account
+		expenseClaim.value.payable_account = data?.default_expense_claim_payable_account
 	},
 })
 
@@ -215,12 +210,7 @@ watch(
 function getFilteredFields(fields) {
 	// reduce noise from the form view by excluding unnecessary fields
 	// eg: employee and other details can be fetched from the session user
-	const excludeFields = [
-		"naming_series",
-		"task",
-		"taxes_and_charges_sb",
-		"advance_payments_sb",
-	]
+	const excludeFields = ["naming_series", "task", "taxes_and_charges_sb", "advance_payments_sb"]
 	const extraFields = [
 		"employee",
 		"employee_name",
@@ -261,18 +251,12 @@ function applyFilters(field) {
 }
 
 function setExpenseApprover(data) {
-	const expense_approver = formFields.data?.find(
-		(field) => field.fieldname === "expense_approver"
-	)
+	const expense_approver = formFields.data?.find((field) => field.fieldname === "expense_approver")
 	expense_approver.reqd = data?.is_mandatory
-	expense_approver.documentList = data?.department_approvers.map(
-		(approver) => ({
-			label: approver.full_name
-				? `${approver.name} : ${approver.full_name}`
-				: approver.name,
-			value: approver.name,
-		})
-	)
+	expense_approver.documentList = data?.department_approvers.map((approver) => ({
+		label: approver.full_name ? `${approver.name} : ${approver.full_name}` : approver.name,
+		value: approver.name,
+	}))
 
 	expenseClaim.value.expense_approver = data?.expense_approver
 	expenseClaim.value.expense_approver_name = data?.expense_approver_name
@@ -339,13 +323,11 @@ function calculateTaxes() {
 	expenseClaim.value?.taxes?.forEach((item) => {
 		if (item.rate) {
 			item.tax_amount =
-				parseFloat(expenseClaim.value.total_sanctioned_amount) *
-				parseFloat(item.rate / 100)
+				parseFloat(expenseClaim.value.total_sanctioned_amount) * parseFloat(item.rate / 100)
 		}
 
 		item.total =
-			parseFloat(item.tax_amount) +
-			parseFloat(expenseClaim.value.total_sanctioned_amount)
+			parseFloat(item.tax_amount) + parseFloat(expenseClaim.value.total_sanctioned_amount)
 		total_taxes_and_charges += parseFloat(item.tax_amount)
 	})
 	expenseClaim.value.total_taxes_and_charges = total_taxes_and_charges
@@ -412,5 +394,4 @@ function validateForm() {
 		expense.cost_center = expenseClaim.value.cost_center
 	})
 }
-
 </script>

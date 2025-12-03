@@ -1060,6 +1060,18 @@
     "@babel/helper-string-parser" "^7.25.9"
     "@babel/helper-validator-identifier" "^7.25.9"
 
+"@capacitor/camera@^7.0.2":
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-7.0.2.tgz#252c7ca951147606fb0dbf30e884001b80ee09b5"
+  integrity sha512-1/UbZZ8MSbRTMMvjQHQFJ0cs2ZNURNoyuUex0rAJwECsyHO0I5SRvu7YoMY5qTcRWScBcqT+3QZcJvETtRg7ug==
+
+"@capacitor/core@^7.4.4":
+  version "7.4.4"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-7.4.4.tgz#b752dd7a12141e40d1c8ce2e37a79571d9f83518"
+  integrity sha512-xzjxpr+d2zwTpCaN0k+C6wKSZzWFAb9OVEUtmO72ihjr/NEDoLvsGl4WLfjWPcCO2zOy0b2X52tfRWjECFUjtw==
+  dependencies:
+    tslib "^2.1.0"
+
 "@esbuild/aix-ppc64@0.21.5":
   version "0.21.5"
   resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.21.5.tgz#c7184a326533fcdf1b8ee0733e21c713b975575f"
@@ -1678,6 +1690,11 @@
     "@stencil/core" "^4.4.0"
     ionicons "7.1.0"
     tslib "^2.1.0"
+
+"@ionic/pwa-elements@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@ionic/pwa-elements/-/pwa-elements-3.3.0.tgz#971c806ebe410c677740f9e4b32bbf26ac29bb93"
+  integrity sha512-vbykpxd2nGRlA67AnqDwsiVf8PUmInLyi6lQdnPDjeiML1WZa0CPe6r632nGDV9PTi+sWNde9Xexg9SD6Pwyqw==
 
 "@ionic/vue-router@^7.4.3":
   version "7.4.3"

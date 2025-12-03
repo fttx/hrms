@@ -28,3 +28,9 @@ body {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 }
+
+@media (min-width: 640px) {
+	.sm\:w-96 {
+		width: 100% !important;
+	}
+}

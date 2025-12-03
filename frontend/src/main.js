@@ -22,6 +22,8 @@ import { employeeResource } from "@/data/employee"
 
 import dayjs from "@/utils/dayjs"
 import getIonicConfig from "@/utils/ionicConfig"
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+defineCustomElements(window);
 
 import FrappePushNotification from "../public/frappe-push-notification"
 
